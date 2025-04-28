@@ -1,0 +1,678 @@
+{
+	"info": {
+		"_postman_id": "ee258485-8685-4d41-9d2b-af9aa5f68bdd",
+		"name": "ADM_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18112734"
+	},
+	"item": [
+		{
+			"name": "Autenticacao",
+			"item": [
+				{
+					"name": "Autenticar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    var res = pm.response.json();\r",
+									"  pm.environment.set('token',res.data[0].token.access_token) \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{       \r\n    \"ds_login\":\"ADMIN\",\r\n    \"ds_senha\":\"123\"        \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/auth/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Listar Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/usuario/v1?SISTEMA=DEV&id_usuario=379fbc9b-52a8-41f0-a8c1-85c32f2007ee",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "nm_usuario",
+									"value": "matheus",
+									"disabled": true
+								},
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								},
+								{
+									"key": "ds_login",
+									"value": "USUARIO_2",
+									"disabled": true
+								},
+								{
+									"key": "id_usuario",
+									"value": "379fbc9b-52a8-41f0-a8c1-85c32f2007ee"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nm_usuario\":\"teste financeir2o\",\r\n        \"ds_login\":\"testefinanceiro3\",\r\n        \"ds_senha\":\"123\",\r\n        \"dt_nascimento\":\"2024-05-18:14:47\",        \r\n        \"ids_perfis\":[\"8c813c1d-caf7-49b4-89f9-19484e7b75c2\",\"7efc4fcb-e478-462b-aaa5-08cbb1f1b631\"]           \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/usuario/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_usuario\": \"1151809e-458b-4d3c-a034-e2b4d45b4efd\",\r\n   // \"ds_login\": \"Angelo\",\r\n   // \"ds_senha\": 123,\r\n    \"nm_usuario\": \"OPERADOR 1\"\r\n    // \"perfis\":[\r\n    //         {\r\n    //             \"nm_perfil\":\"FINANCEIRO\"\r\n    //         }         \r\n    //     ]\r\n    // \"telefones\":[\r\n   //     {\r\n     //       \"nr_telefone\":\"2222\"\r\n    //     },\r\n    //     {\r\n    //         \"nr_telefone\":\"2222\"\r\n    //     }\r\n    // ]   \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/usuario/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar Perfil",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id_usuario\": \"379fbc9b-52a8-41f0-a8c1-85c32f2007ee\",                \r\n        \"id_perfil\":\"6f14b8a0-5f2d-49c4-95ff-6fe04c0b008a\"           \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/usuario/perfil/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"perfil",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Perfil do Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id_usuario\": \"379fbc9b-52a8-41f0-a8c1-85c32f2007ee\",                \r\n        \"id_perfil\":\"6f14b8a0-5f2d-49c4-95ff-6fe04c0b008a\"           \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/usuario/perfil/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"perfil",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Perfil",
+			"item": [
+				{
+					"name": "Listar Perfis",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/perfil/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"perfil",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								},
+								{
+									"key": "nm_perfil",
+									"value": "FINANCEIRO",
+									"disabled": true
+								},
+								{
+									"key": "ids_perfis",
+									"value": "6f14b8a0-5f2d-49c4-95ff-6fe04c0b008a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Perfil",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nm_perfil\":\"ADMINISTRADOR\",   \r\n    \"acessos\":\r\n    [\r\n        {\r\n            \"nm_acesso\":\"ADMINISTRADOR\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/perfil/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"perfil",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar Perfil",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_perfil\": \"adb718b2-a14f-41ad-8e2d-67a0ce8bfb5b\",\r\n    //\"nm_perfil\":\"REGIONAL2\",\r\n    \"acessos\":[{\r\n        \"nm_acesso\":\"ADMINISTRADOR\"\r\n    }    \r\n    ]   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/perfil/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"perfil",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Perfil",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_perfil\":51  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/perfil/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"perfil",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar Acesso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id_perfil\":\"6f14b8a0-5f2d-49c4-95ff-6fe04c0b008a\"   ,\r\n        \"id_acesso\": \"3634d4cd-2a77-47b5-84e0-44dffde22904\"                \r\n                \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/perfil/acesso/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"perfil",
+								"acesso",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Acesso",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id_perfil\":\"6f14b8a0-5f2d-49c4-95ff-6fe04c0b008a\"   ,\r\n        \"id_acesso\":\"3634d4cd-2a77-47b5-84e0-44dffde22904\"                \r\n                \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/perfil/acesso/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"perfil",
+								"acesso",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Acesso",
+			"item": [
+				{
+					"name": "Listar Acessos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/acesso/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"acesso",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								},
+								{
+									"key": "nm_acesso",
+									"value": "ADMINISTRADOR",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Acessos Paginacao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/acesso/porpagina/v1?SISTEMA=DEV&page=2&limit=2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"acesso",
+								"porpagina",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								},
+								{
+									"key": "nm_acesso",
+									"value": "ADMINISTRADOR",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Acesso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nm_acesso\":\"TESTE23\"\r\n   // \"perfis\":[{\"nm_perfil\":\"FINANCEIRO\"}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/acesso/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"acesso",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar Acesso",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_acesso\":2,\r\n    \"nm_acesso\":\"ADMINISTRADOR\"   ,\r\n    \"perfis\":[{\"nm_perfil\": \"ADMIN\"}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/acesso/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"acesso",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Acesso",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_acesso\":\"6fae05ee-5068-497c-be48-30cb9b260276\"  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/acesso/v1?SISTEMA=DEV",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"acesso",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "SISTEMA",
+									"value": "DEV"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
